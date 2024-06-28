@@ -1,0 +1,36 @@
+##SysModule 
+#Python runtime environment details
+
+import sys
+
+#dir(sys)
+#help(sys)
+print(sys.platform)            #python software installed
+print(sys.version)             #python version 
+print(sys.modules)             # list of imported doubles
+print(sys.path)  
+
+sys.exit()             #stop running python script
+
+
+----------------------------------------------------------------------------------------
+
+#sys.argv of sys modules: returns a list of commandline argumensts passed to python script 
+
+#get comand line arguments 
+import sys
+print(sys.argv)
+print(sys.argv[0])
+
+usr_str = sys.argv[1]
+usr_action = sys.argv[2]
+
+if len(sys.argv) !=3:
+    sys.exit()
+print("hello")  
+
+if usr_action=="lower":
+    print(usr_str.lower())
+
+
+

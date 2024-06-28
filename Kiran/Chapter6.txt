@@ -1,0 +1,48 @@
+#Python Operators
+
+##Arithmetic    #i/o value o/p value
+# +, -, *, /, //, **, %
+
+
+##assignment   #i/o value o/p value
+# =, +=, -= etc
+
+#Comparission  #i/o value o/p True or false
+# ==, >, <, != , <=, >=
+# Python Covert String to ASCII code and compare
+
+##Identity      #i/o value o/p True or false
+#Used to find type of : class/type/object
+# is
+# is not
+
+##Membership    #i/o value o/p True or false
+#Validate Membership of Value
+# in 
+# not in 
+version = ['1.1','2.2','1.32','2.25']
+a='1.1'
+if a in version:
+    print(f"{a} version found")
+
+
+##Logical       # i/op True or false o/p True or false
+# and , or ,
+#not : not of true -> false vice versa
+
+a=1;b=2;c=32
+if a<b and b<c or a>c:
+    print("yes")
+
+if all([a<3,4<5]):
+    print("yes") #all == and , can add multiple condition
+    
+#any == or 
+if any([a<3,4>5]):
+    print("yes")
+
+##Bitwise     #i/o value o/p value, binary representation
+
+
+
+

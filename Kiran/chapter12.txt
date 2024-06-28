@@ -1,0 +1,26 @@
+#date time module
+
+import datetime 
+print(dir(datetime))
+print(dir(datetime.datetime))
+
+print(datetime.datetime.now())
+print(datetime.datetime.today())
+
+print(datetime.datetime.now().year)
+print(datetime.datetime.now().day)
+print(datetime.datetime.now().hour)
+
+print(datetime.datetime.now().strftime("%y-%m-%d"))         #format
+
+# https://strftime.org/
+
+
+---------------------------------------------------------------------
+
+#date time module
+
+from datetime import datetime 
+print(datetime.fromtimestamp(121212121212))
+
+---------------------------------------------------------------------

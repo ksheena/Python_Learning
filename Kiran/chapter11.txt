@@ -1,0 +1,124 @@
+#loops 
+
+#If and else
+
+import os
+
+path = input("Enter Path:")
+if os.path.exists(path):
+    if os.path.isfile(path):
+        print(f"given path {path} is file")
+    else:
+        print(f"{path} is directory")
+else:
+    print(f"{path} invalid")
+
+
+--------------------------------------------------------------
+
+#If and else and for loop
+
+import os
+
+path = input("Enter directory Path:")
+if os.path.exists(path):
+    dirs = os.listdir(path)
+    for value in dirs:
+        full_path=os.path.join(path,value)
+        if os.path.isfile(full_path):
+            print(f" {full_path} is a file")
+        else:
+            print(f" {full_path} is a directory")
+else:
+    print(f"{path} invalid")
+
+
+--------------------------------------------------------------
+
+#for : used to iterate over a sequence inerrable object
+
+# while: Execute a block of statement repeatedly until given condition satisfied 
+
+--------------------------------------------------------------
+
+str1 = input("Enter a string")
+index = 0
+for val in str1:
+    print(f"{val} -> {index} ")
+    index+=1
+
+--------------------------------------------------------------
+
+import os
+import sys
+
+str1 = input("Enter directory string")
+if os.path.isfile(str1):
+    print("path is a file. Please enter directory")
+else:
+    str2 = input("Enter file extension")
+    dir = os.listdir(str1)
+    if len(dir) == 0:
+        print("empty directory")
+    else:
+        for val in dir:
+            if val.endswith(".py"):
+                print(val)
+
+
+--------------------------------------------------------------
+
+#range() - generate integers as a list
+#range(start,stop,step)
+
+print(list(range(0,100,5)))
+
+mylst = [10,20,30,40,50]
+for indx in range(len(mylst)):
+    print(f"index -> {indx} : value {mylst[indx]}")
+
+--------------------------------------------------------------
+
+mydict={'a':1,'b':2,'c':4}
+for key,value in mydict.items():
+    print(key,value)
+
+
+-------------------------------------------------------------
+
+
+#whie loop
+
+
+import time
+while True:                             # infinity no of time
+    print("monitoring file system")
+    time.sleep(3)
+
+
+val = 0
+while(val<10):
+    print(val)
+    val+=1
+
+-------------------------------------------------------------
+
+#Control Statement 
+#break
+#continue -> in that iteration logic going to skip
+
+for each in [1,2,3,4]:
+    print(each)
+    break
+
+
+
+for each in range(1,11):
+    if each==7:
+        continue
+        print("hellooooooooooooooo")
+    print(each)  
+
+
+if True:
+    pass

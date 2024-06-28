@@ -1,0 +1,115 @@
+help(str)
+
+------------------------------------------------
+String Slice, length, Concatenate 
+str1 = "Python Scripting"
+str2 = "Learning"
+
+
+print(str1[0:5])
+print(str1[-1])
+
+print(f'{len(str1)}')
+
+print(f'{str1+" "+str2}')
+
+-------------------------
+
+str1 = "Python scripting"
+str2 = "Learning"
+
+print(str1.upper())     #strings are immutable. So actual string not changes
+print(str1.lower())
+
+print(dir(str1))
+print(str1.title())     # leter start is caps 
+print(str1.casefold())  # lower case
+
+
+['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'capitalize', 'casefold', 'center', 'count', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'format_map', 'index', 'isalnum', 'isalpha', 'isascii', 'isdecimal', 'isdigit', 'isidentifier', 'islower', 'isnumeric', 'isprintable', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'maketrans', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
+
+
+----------------------------------------------
+
+# Boolean Operation
+
+str1 = "Python Learning"
+
+print(str1.startswith('Pyt'))
+print(str1.endswith('ing'))
+print(str1.islower())
+print(str1.isupper())
+print(str1.isalpha())              # False:  Space is not alpha
+
+-----------------------------------------------
+
+# Join Center and Zfill (Zero fill)
+
+str1 = "Python"
+print("_".join(str1))            # P_y_t_h_o_n
+print("\t".join(str1))           # P	y	t	h	o	n
+
+str2 = "Learning Orielly"
+print(f'{str1.center(20)}\n{str2.center(20)}')   # print the string center 
+
+print(f'{str1.zfill(20)}')  # total 20 character fill remaining with 0 PADDING
+
+
+-----------------------------------------------
+
+# Strip and split
+
+str1 = "Python "
+str2 = "gLearning"
+
+print(str1.strip())  # By default remove space either at start and ending
+print(str2.strip('g'))  #either at start and ending
+print(str2.rstrip('g'))  #from the end ending
+print(str2.lstrip('g'))  #from the end start
+
+str3 = "pythontest"
+print(str3.rstrip('t').lstrip('p'))
+
+####
+str3 = "python Learning" 
+print(str3.split())          # spli by space
+
+-----------------------------------------------
+
+# Count, index and find Operation 
+
+str1 = "Hello I am learning Python"
+print(str1.count('l'))              # count learning
+
+print(str1.index('l', 4))              # index value of given string 
+
+print(str1.find('l', 4))          # find 'l' from 4th index
+
+print(str1.find('ami'))
+
+
+-----------------------------------------------
+
+# Count, index and find Operation 
+
+str1 = input("Enter your string: ")
+
+print(str1.center(122))                 # 122 terminal line width
+print(str1.ljust(122))
+print(str1.rjust(122))
+
+###########
+# Count, index and find Operation 
+import os
+
+str1 = input("Enter your string: ")
+
+line_width = os.get_terminal_size().columns
+
+print(str1.center(line_width))                 # 122 terminal line width
+print(str1.ljust(line_width))
+print(str1.rjust(line_width))
+
+-----------------------------------------------
+
+

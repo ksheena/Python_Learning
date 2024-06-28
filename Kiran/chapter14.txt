@@ -1,0 +1,100 @@
+# Working with Text File:
+
+# Create and new file
+# Read file
+# add content to existing file 
+# w - write  /  r - read /  a - append  mode
+
+
+# By default file opened in read mode
+-----------------------------------------------------
+
+#get Current working directory and files in it 
+import os
+current_working_directory = os.getcwd()
+print(current_working_directory)
+print(os.listdir(current_working_directory))
+
+------------------------------------------------------
+    
+
+#open empty file 
+fo=open('text1.py','w')       #open file with write mode  ( initiate file cursor)
+print(fo.mode)                # file mode
+print(fo.readable())          # function to check readable 
+print(fo.writable())          # function to check writable 
+fo.close()                     #Close file
+
+
+
+-------------------------------------------------------
+
+#write to file 
+fo=open('text2.txt','w')       
+fo.write("this is a first file \n")    # \n write in new line. Send Cursor to next line 
+fo.write("this is a second file ")        
+fo.close()      
+
+#Note: when open file in 'w' mode each time open new file or overwrite existing file with same name 
+-------------------------------------------------------
+
+#write multiple line
+fo=open('text2.txt','w')       
+my_content=["this is a data -1\n", "This is data -2\n", "this is data 3"]
+fo.writelines(my_content)             # function takes list 
+fo.close()                     
+
+
+my_content = ["this is a data -1", "This is data -2", "This is data 3"]
+fo=open('text3.txt','w')
+for each_line in my_content:
+    fo.write(each_line+"\n")
+fo.close()
+
+-------------------------------------------------------
+
+#Append the data to file
+my_content = ["this is a data -3", "This is data -4", "This is data 5"]
+fo=open('text4.txt','a')
+for each_line in my_content:
+    fo.write(each_line+"\n")
+fo.close()
+
+# while append file is not there. Append will cretae file
+
+
+-------------------------------------------------------
+
+#Read file
+fo=open('main.py','r')
+data = fo.read()
+fo.close()
+
+# Read one by one 
+fo=open('main.py','r')
+print(fo.readline())
+print(fo.readline())
+fo.close()
+
+
+fo=open('main.py','r')
+data= fo.readlines()             # read all and store in list 
+for each in range(3):            # get first 3 index value
+    print(data[each])
+print(type(data))                
+fo.close()
+
+-------------------------------------------------------
+
+#Copy content of file to another file
+
+fo_src=open('/home/repl/text1.txt','r')
+data = fo_src.read()
+fo.close()
+
+fo_dest=open('new_text1.txt','w')
+fo_dest.write(data)
+fo.close()
+
+-------------------------------------------------------
+

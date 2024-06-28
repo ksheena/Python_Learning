@@ -1,0 +1,68 @@
+#SUB process module
+
+import subprocess
+sp=subprocess.Popen(cmd,shell=True/False,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+sp.wait()
+out,err=sp.comminicate()           # sp out in tuple
+
+Shell =True        #command as string    , python execute in new shell
+Shell = False      # command as list     , python execute in current shell
+
+
+
+---------------------------------------------------------
+
+
+import subprocess
+cmd="ls -lrt"
+sp=subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+return_code = sp.wait()
+out,err=sp.communicate()           # sp out in tuple
+print(return_code)
+print(out)                 #out put in byte code   -> b''
+print(err)                  #out put in byte code
+
+
+
+
+# to get out in string 
+
+sp=subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
+
+
+#convert output into list 
+print(out.splitlines())
+print(err.splitlines())
+
+-----------------------------
+#Convert command into list 
+cmd="ls -lrt"        
+cmd = cmd.split()        
+
+-------------------------------------------------------
+#list shell=False
+
+import subprocess
+cmd=['ls','-lrt']
+sp=subprocess.Popen(cmd,shell=False,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+return_code = sp.wait()
+out,err=sp.communicate()           # sp out in tuple
+print(return_code)
+print(out.splitlines())                 #out put in byte code   -> b''
+print(err.splitlines())                  #out put in byte code
+
+
+-----------------------------------------------------------------------------------
+
+#get bash version
+
+import subprocess
+cmd=['bash','--version']
+sp=subprocess.Popen(cmd,shell=False,stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
+return_code = sp.wait()
+out,err=sp.communicate()           
+print(return_code)
+print(out.splitlines()[0].split()[3].split('(')[0])               
+print(err.splitlines())                 
+
+

@@ -1,0 +1,13 @@
+# Count, index and find Operation 
+
+str1 = input("Enter your string: ")
+str2 = input("Do you want allign(Yes/No):")
+print(str1)
+if str2=="yes":
+    print(str1.center(122))                 # 122 terminal line width
+    print(str1.ljust(122))
+    print(str1.rjust(122))
+elif str2=="No":
+    print("Thank you")
+else:
+    print("Invalid")

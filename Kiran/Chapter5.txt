@@ -1,0 +1,102 @@
+# Data Structures of Python : collection of data
+# is mutable
+
+#list ---> []
+
+list1=[1,2,3,'kiran','python']
+list2= []
+print(type(list1))
+
+print(list1[0])
+print(list1[:])
+print(list1[0:])
+
+print(list1[1:4])
+
+
+print(list1[3][2])    # get 'r' from string: kiran
+for i in list1:
+    print(i)
+    
+list1[1]=45
+
+print(list1)
+
+print(bool(list2))   # boolean of empty list False 
+print(bool(list1))   # boolean of non empty list True 
+
+print(dir(list1))
+
+print(list1.index(45))  # index of 45
+print(list1.count(45))  # count of element in list 
+list1.append(4)
+print(list1)
+list1.insert(2,7)
+print(list1)
+
+list4 = list1          # Share same memory location 
+list4 = list1.copy()   # Diffrent memory locaion 
+
+list1.remove(45)      # remove value
+list1.pop(1)         # based on index
+
+-----------------------------------------------------------------------------------------
+
+#Tuple --> ()
+#immutable
+
+tupl1 = (3,4,5)
+tuple2 = ()
+
+print(bool(tuple2))        # False - to empty tuple
+
+tupl3 =  (3,4,5,[5,6,7])
+print(tupl3[3][1])        # get 6 in list
+
+print(tupl3[1:4])
+
+x=1,  ; x=1,2,3    #tuple with one value "," or multiple
+
+-----------------------------------------------------------------------------------------
+
+#Dictionary --> {} with key value pair 
+#dict is ordered collection of data in new 
+dict1 = {}
+print(bool(dict1))    # false - empty
+
+dict2={'fname':'kiran','nmame':'kumar','lname':'sheena'}
+print(dict2.keys())
+print(dict2['fname'])
+print(dict2.get('fname'))         # Give None if error. Best Pratice to use
+
+print(dir(dict2))
+
+dict2['address'] = 'TVM'     # add new key or modify new key
+print(dict2)
+print(dict2.items())  #key and value as one item 
+
+dict3={'td':'4'}
+dict2.update(dict3)  
+print(dict2)
+
+# pop to remove by key 
+
+#created dictionary based on key list 
+keys=['a','b','c','d']
+dict5=dict.fromkeys(keys)
+dict5['a'] = "abc"
+print(dict5)
+
+dict5.setdefault('f',"bcd")  #If key is not create with value 
+print(dict5)
+
+--------------------------------------------------------------
+
+#set --> {}
+# set are unordered colection of list 
+# duplicate will be remove by default 
+
+set={1,2,3,4,5}
+
+set=({})  # define empty set 
+

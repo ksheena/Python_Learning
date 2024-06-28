@@ -1,0 +1,56 @@
+# Working with CSV
+
+
+# CSV : Comma Separated Values
+# Used to store tabular data
+
+# Read CSV file
+import csv
+fo=open('info.csv', 'r')
+data=csv.reader(fo,delimiter=',')
+for each in data:
+    print(each)
+fo.close
+
+fo_1=open('info-new.csv', 'r')
+data_1=csv.reader(fo_1,delimiter='|')
+for each in data_1:
+    print(each)
+fo_1.close
+
+
+---------------------------------------------------------
+
+
+#read only header of CSV file
+fo_1=open('info-new.csv', 'r')
+data_1=csv.reader(fo_1,delimiter='|')
+print(f"haeder is : {next(data_1)}")                      # Cursor moves to next line
+print(f"Number of rows : {len(list(data_1))}")
+print(list(data_1))
+
+fo_1.close()
+
+--------------------------------------------------------
+#write to CSV
+
+import csv
+
+req_file = "demo.csv"
+fo = open(req_file, "w",newline="")
+csv_writer = csv.writer(fo, delimiter = ",")
+csv_writer.writerow(["Name", "Age", "City"])                           # individual list(row)
+csv_writer.writerow(["John", "38", "New York"])
+csv_writer.writerow(["Mary", "32", "San Francisco"])
+fo.close()
+
+
+import csv
+
+req_file = "demo.csv"
+fo = open(req_file, "w",newline="")
+csv_writer = csv.writer(fo, delimiter = ",")
+data = [["Name", "Age", "City"], ["John", "38", "New York"], ["Jane", "25", "London"]]       # input as list of lists
+csv_writer.writerows(data)
+fo.close()
+

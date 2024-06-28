@@ -1,0 +1,47 @@
+#Working with files like json 
+#json : javascript object notation : is a popular data format used for representing structured data.
+
+import json
+req_file = open("sample.json", 'r')
+data = json.load(req_file)
+print(type(data))
+print(data.keys())
+print(data.get("glossary").keys())
+print(data.get("glossary").get("title"))
+print(data.get("glossary").get("glossDiv"))
+
+
+
+import json
+req_file = open("sample.json", 'r')
+data = json.load(req_file)
+print(data.keys())
+print(data['glossary']['title'])
+print(data['glossary']['GlossDiv']['GlossList']['GlossEntry']['GlossDef']['para'])
+
+
+
+------------------------------------------------------------------------------------------------------------
+
+#write to json 
+#json : javascript object notation : is a popular data format used for representing structured data.
+
+import json
+req_file = open("sample1.json", 'w')
+
+my_dict={'name':'kiran','skills':['python','java','c++']}
+json.dump(my_dict,req_file,indent=4)
+req_file.close()
+
+
+------------------------------------------------------------------------------------------------------------
+
+Python        JSON Equivalent
+-----------------------------
+dict             object
+list, tuple 	 array
+str		 string
+int,float	 number
+true		 true
+fasle		 fasle
+None 		 Null

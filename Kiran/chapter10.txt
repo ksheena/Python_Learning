@@ -1,0 +1,97 @@
+#Simple os operation
+
+#OS MODULE
+
+1. os
+2. os.path
+3. os.system()
+4. os.walk()
+
+
+import os
+
+#print(dir(os))          
+#print(help(os))
+print(os.sep)       #   (separator in path (/ : /home/k3bywp8))  in windows \u is unicode. windows use path as c:\\user\\local\\bin
+print(os.getcwd())  # Current working directory
+print(os.chdir("/home/repl/"))  #change
+print(os.listdir())             #listdir
+os.mkdir("wwww")               # create dir
+print(os.listdir()) 
+os.mkdirs("/home/new/xxx")      # recursively create dir
+print(os.listdir()) 
+
+os.remove("www")                 # remove dir
+os.removedirs("/homw/new/xxx")   # recursively remove
+os.rmdir()
+
+os.rename("src", "dest")
+
+os.environ()            #environment variable
+
+os.getuid()
+os.getgid()
+os.getpid()
+
+
+--------------------------------------------------------------------------------------------------------
+#os.path module
+
+import os
+print(dir(os.path))               # get the path 
+
+print(os.path.sep)               #(separator in path (/ : /home/k3bywp8))  in windows \u is unicode. windows use path as c:\\user\\local\\bin
+
+path="/home/repl/"
+print(os.path.basename(path))              #filename
+print(os.path.dir(path))                   #getting directory
+
+path1="/home"
+path2="user-1024"
+print(os.path.join(path1, path2))             #join path. need to provide path separators
+os.path.split(path)
+print(os.path.getsize(path))
+
+if os.path.exists(path):                         # Check path exists. Result in bool 
+   print("yes")
+   
+os.path.isfile(path)                            # check is a file
+os.path.isdir(path)
+os.path.islink("myos")                          # check for soft is link
+
+
+--------------------------------------------------------------------------------------------------------
+#os.system()   - execute os commands 
+
+import os
+
+os.system("pwd")
+os.system("ls")
+result=os.system("ls")       #only store return code| 0: success 
+print("result")
+
+---------------------------------------------------------------------------------------------------------
+
+#os.walk(path)  -generate directory and file names in a directoty tree by walking
+
+import os
+
+path="/home/kiran/new"
+print(list(os.walk(path)))  # generate list first [] it consists of tuple () and that contains 3 vales 
+# 1 value -> path 
+# 2 value -> list of directoty
+# 3 value -> list of files
+
+# Python will serach recversively - list directory and files inside the provided path. (list will have multiple tuples for parent and each directories in it )
+
+
+for value in os.walk(path):
+    paths, directories, lists = value
+    print(paths)
+    print(directories)
+    print(lists)
+    
+    
+os.walk(path,topdown=False)          #False - list directory/files from bottom in file tree structure
+
+

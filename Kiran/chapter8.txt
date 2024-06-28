@@ -1,0 +1,73 @@
+#Module - is a file contain python definition and statement. contain functions, Classes and Variables 
+
+#use - reusability
+
+import mymodule  #(mymodule.py (in same location) where we declared the variable 'a' )
+print(a)
+
+
+#Default Modules 
+print(help("modules"))    # list all default modules
+
+-----------------------------------------------------------
+
+import math              # math module
+print(dir(math))
+
+print(help(math))
+
+print(math.pow(2,3))     # function 
+print(math.pi)           # variable
+
+-----------------------------------------------------------
+Types of Modules
+# Default module
+# ThirdParty Module  (use pip command to install third-party module)
+
+method 1:
+import match
+print(math.pow(2,3))     
+print(math.pi)           
+
+method 2:
+from math import * # from math import all 
+print(pi)
+print(pow(2,3))
+
+method 3:
+from match import pi
+print(pi)
+
+method 4:
+import math as m
+print(m.pi)
+
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+#Plaform Module - access Plaform date - hardware, operating system and interprter version 
+
+import platform as pl
+
+#print(dir(pl))
+#print(help(pl))
+
+print(pl.system())             # return OSname
+print(pl.python_version())   
+print(pl.machine())
+print(pl.release())
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+#GetPass module  - 
+#getpass - getpass module allosws securly enter password in terminal 
+#getuser - Check env vatibles to get user.  LOGNAME, USER and USERNAME in order and returns value . Automatically find login user 
+
+import getpass
+#print(dir(getpass))
+dp_pass=getpass.getpass(prompt="Enter Your DB Password")
+dp_user=getpass.getuser() 
+print(dp_user)
+

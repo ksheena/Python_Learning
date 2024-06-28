@@ -1,0 +1,119 @@
+#Exception handling with try and except
+
+
+try:
+    with open("info.csv") as f:
+        print(f.read())
+except FileNotFoundError:
+    print("File not found")
+
+
+
+# Errors are two types
+# 1. Syntax error
+print(""     : no way to handle syntax error
+
+# 2. Runtime error
+print(10/0)         # syntax is correct. But it is a runtime error -> Exceptions
+
+
+
+try:
+    print(4/0)
+except Exception as e:
+    print("Error occurred can't divide by zero")
+    print(e)
+
+
+
+try:
+    with open("infdo.csv") as f:
+        print(f.read())
+except FileNotFoundError as e:     # get the error
+    print("File not found")
+    print(e)                       # print the error
+
+
+
+#Exception examples:
+1. ZeroDivisionError   --> ZeroDivisionError: division by zero
+2. FileNotFoundError    --> FileNotFoundError: [Errno 2] No such file or directory: 'infdo.csv'
+3. ValueError        --> ValueError: invalid literal for int()
+4. TypeError          --> TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+5. KeyError           --> KeyError: 'a'
+6. NameError         --> NameError: name 'a' is not defined
+7. IndexError        --> IndexError: list index out of range
+
+
+# Exception handling for known exceptions
+-> if you know what error you are getting.
+
+try:
+    print(a)    # a is not defined
+except NameError:             # we know it will throw name error since a is not defined 
+    print("a is not defined") 
+except Exception as e:
+    print(e)        
+
+
+ try:
+   # print(a)    # a is not defined
+   open("infoaa.csv", 'r')    # open file in read mode ('r)
+except NameError:             # we know it will throw  NameError since a is not defined 
+    print("a is not defined") 
+except FileNotFoundError:     # we know that it is FileNotFoundError
+    print("File not found")
+except Exception as e:
+    print(e)   
+
+
+
+#Finally 
+
+try:
+    print(a)    # a is not defined
+except NameError:             # we know it will throw name error since a is not defined 
+    print("a is not defined") 
+except FileNotFoundError:
+    print("File not found")
+except Exception as e:
+    print(e)
+finally:                      # finally will execute no matter what
+    print("End of program")
+
+
+#Difference between try except finally and try except else
+
+try:
+    a=10
+    print(a)
+except NameError:
+    print("a is not defined")
+except Exception as e:
+    print(e)
+else:
+    print("No error")          # if there is no exception then excute else block   
+finally:                       # it will execute if there or not any exception
+    print("This will execute no matter what")
+
+
+#Create Custom Exception
+1. raise
+2. assert
+
+raise Exception("This is my exception")
+
+age = 10
+if age>18:
+    print("eligible")
+else:
+    raise Exception("Not eligible")
+
+
+#assert -> if condition is true else raise exception
+
+try:
+    assert 4<3
+    print("4 is less than 3")
+except AssertionError:
+    print("4 is not less than 3")
