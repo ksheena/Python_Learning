@@ -1,0 +1,189 @@
+#Python Functions
+- block of code for some specific operation 
+- Re-usable 
+- Function should be defined at the beginning of script then call.  
+- Function name should have only 0-9, A_A, a-z, _
+- No space in function name 
+
+import os
+import time
+import platform
+
+#function starts 
+def mycode(cmd1, cmd2):                    #function define
+    print("Clearing the screen:")
+    time.sleep(2)                          # Sleep of 2 seconds 
+    os.system(cmd1)
+    print("listing directory :")
+    time.sleep(2)
+    os.system(cmd2)
+#end of function 
+
+if platform.system() == "Windows":          # check running platform 
+    mycode("cls", "dir")                    # function call (execute windows command )
+else:
+    mycode("clear", "ls -lrt")              # function call (execute Linux command )
+
+
+
+----------------------------------------------------------------------------------------
+
+# Default function : example  len(x)  
+
+# User defined function 
+
+----------------------------------------------------------------------------------------
+def calc1(var1: int, var2: int, operator: str):      # function definition 
+    if operator == "+":
+        result = var1+var2
+    elif operator == "-":
+        result = var1-var2
+    return result                    # return the result 
+
+
+result = calc1(1,6,'+')               # call the function and assign result to variable 
+print(result)
+
+----------------------------------------------------------------------------------------
+# Calling function in another function 
+
+
+def funct1():
+    x = 10                             # Scope of the variable within this function. Local variable 
+    print("Hello World!")
+    funct2()                           # calling Second function 
+    return None                         
+
+
+def funct2():  
+    print("Thank you")
+    return None
+
+x=70                                    # Global variable. can be called any ware in script 
+
+funct1()
+
+----------------------------------------------------------------------------------------
+
+
+def get_result(number: int):                 # Parameter/positional argument: define function with variable
+    result = number=+20
+    return result                         # return the result
+                     
+
+def main():           
+    num = eval(input("Enter a number:"))
+    output = get_result(num)                 # Arguments : Passing variables to function  and assign result to variable "output"
+    print(output)
+
+main()
+
+----------------------------------------------------------------------------------------
+
+# function with default argument 
+
+
+def display(a=3):                 # Assign default value to variable (a=3)
+    print(f"Value of A: {a}")
+    return None
+
+display(4)
+display()                 # takes default value
+
+----------------------------------------------------------------------------------------
+def display(a, b):                  
+    print(f"Value of A: {a}")
+    return None
+
+display(a=4, b=3)         # pass argument based on keywords basis
+display(b=4, a=3)
+
+----------------------------------------------------------------------------------------
+def display(*arg):                 # variable length argument. can pass more number of arguments 
+    print(f"Value of A: {arg}")
+    print(type(arg))
+    return None
+
+display(3)         
+display()
+display(2, 2, 23)                   # calling with multiple argument 
+
+----------------------------------------------------------------------------------------
+def display(**karg):                # **       variable length keyword based argument.      
+    print(f"Value of A: {karg}")
+    print(type(karg))
+    return None
+
+display(a=3,b=4)
+display(a=3,b=4,c=4)          #  calling with multiple keyword argument
+
+----------------------------------------------------------------------------------------
+
+Script1.py
+def add_num(num1, num2):
+    return num1+num2
+
+def sub_num(num1, num2):
+    return num1-num2
+
+
+scripr2.py
+
+import script1
+
+#print(dir(script1))
+print(script1.add_num(1,2))
+-----------------------------
+from script1 import  *
+
+print(add_num(1,2))
+
+----------------------------------------------------------------------------------------
+
+name variable:
+
+scrip1:
+print("this is from script2",__name__)
+
+o/p:
+this is from script2 __main__
+
+Script2:
+import script1
+print("this is from script 1",__name__)
+
+o/p:
+this is from script2 script1
+this is from script 1 __main__
+----------------------------------------------------------------------------------------
+
+Script1: 
+def add_num(num1, num2):
+    return num1+num2
+
+def sub_num(num1, num2):
+    return num1-num2
+
+def main():
+    print(f"Main : {add_num(3,3)}")
+
+
+if __name__=="__main__":
+    main()
+
+script2:
+import script1
+
+def main():
+    print(script1.add_num(3,4))
+
+if __name__=="__main__":
+    main()
+
+print(__name__)
+
+
+When ever try to import call from other scripts excluding what ever there in main. importing only functions that we required from it. 
+----------------------------------------------------------------------------------------
+
+
