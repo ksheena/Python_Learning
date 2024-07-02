@@ -118,8 +118,9 @@ display(a=3,b=4)
 display(a=3,b=4,c=4)          #  calling with multiple keyword argument
 
 ----------------------------------------------------------------------------------------
+#Import user defined function:
 
-Script1.py
+Script1.py                         #function created in script1
 def add_num(num1, num2):
     return num1+num2
 
@@ -129,10 +130,10 @@ def sub_num(num1, num2):
 
 scripr2.py
 
-import script1
+import script1                           # imported in script2 
 
 #print(dir(script1))
-print(script1.add_num(1,2))
+print(script1.add_num(1,2))              #called in script2
 -----------------------------
 from script1 import  *
 
@@ -140,7 +141,7 @@ print(add_num(1,2))
 
 ----------------------------------------------------------------------------------------
 
-name variable:
+name variable: When ever try to import call from other scripts excluding what ever there in main. importing only functions that we required from it. 
 
 scrip1:
 print("this is from script2",__name__)
@@ -183,7 +184,7 @@ if __name__=="__main__":
 print(__name__)
 
 
-When ever try to import call from other scripts excluding what ever there in main. importing only functions that we required from it. 
+
 ----------------------------------------------------------------------------------------
 
 
