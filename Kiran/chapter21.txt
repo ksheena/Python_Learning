@@ -1,0 +1,27 @@
+'''
+#Python Shutil Module
+
+High level operations on file 
+
+
+>>> import shutil
+>>> dir(shutil)
+['COPY_BUFSIZE', 'Error', 'ExecError', 'ReadError', 'RegistryError', 'SameFileError', 'SpecialFileError', '_ARCHIVE_FORMATS', '_BZ2_SUPPORTED', '_GiveupOnFastCopy', '_HAS_FCOPYFILE', '_LZMA_SUPPORTED', '_UNPACK_FORMATS', '_USE_CP_SENDFILE', '_WINDOWS', '_WIN_DEFAULT_PATHEXT', '_ZLIB_SUPPORTED', '__all__', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', '_access_check', '_basename', '_check_unpack_options', '_copyfileobj_readinto', '_copytree', '_copyxattr', '_destinsrc', '_ensure_directory', '_fastcopy_fcopyfile', '_fastcopy_sendfile', '_find_unpack_format', '_get_gid', '_get_uid', '_is_immutable', '_islink', '_make_tarball', '_make_zipfile', '_ntuple_diskusage', '_rmtree_isdir', '_rmtree_islink', '_rmtree_safe_fd', '_rmtree_unsafe', '_samefile', '_stat', '_unpack_tarfile', '_unpack_zipfile', '_use_fd_functions', 'chown', 'collections', 'copy', 'copy2', 'copyfile', 'copyfileobj', 'copymode', 'copystat', 'copytree', 'disk_usage', 'errno', 'fnmatch', 'get_archive_formats', 'get_terminal_size', 'get_unpack_formats', 'ignore_patterns', 'make_archive', 'move', 'nt', 'os', 'posix', 'register_archive_format', 'register_unpack_format', 'rmtree', 'stat', 'sys', 'unpack_archive', 'unregister_archive_format', 'unregister_unpack_format', 'which']
+>>>
+
+
+'''
+
+import shutil
+
+shutil.copyfile('info.csv', 'info-new.csv')   # copy file
+shutil.move('info-new.csv', 'info.csv')       # move file
+shutil.copymode('info.csv', 'info-new.csv')   # copy permissions of soure file to destination file
+shutil.copystat('info.csv', 'info-new.csv')   # copy timestamp of soure file to destination file
+shutil.copy('info.csv', 'info-new.csv')       # copy file and permissions and timestamp of soure file to destination file
+shutil.copy2('info.csv', 'info-new.csv')     # copy file and permissions of soure file to destination file
+
+shutil.copyfileobj(open('info.csv', 'r'), open('info-new.csv', 'w')) # copy contents of soure file to destination file . Open file in read mode and write mode
+
+shutil.copytree('/home/kiran', '/tmp')  # copy directory and all its contents
+shutil.rmtree('/tmp')  # remove directory and all its contents

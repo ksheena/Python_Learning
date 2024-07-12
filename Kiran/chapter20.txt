@@ -1,0 +1,68 @@
+''' 
+#Working with remote Linux Server from Linux/Windows using Paramiko Of Python 
+
+ - Python Module to work with remote server 
+ - will cretae a ssh client and by using it connect to remote server and executes commands
+ - using password or SSH key 
+
+Local Server                  Remote server
+widnows                         Windows
+Windows                         Linux
+Linux                           Windows
+Linux                           Linux
+
+
+
+'''
+
+
+import paramiko
+
+ssh = paramiko.SSHClient()
+ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+ssh.connect('89.0.142.86', port=22, username='admin', password='admin', timeout=5, compress=True)
+
+stdin, stdout, stderr = ssh.exec_command('ls')
+print(stdout.read().decode())
+
+ssh.close()
+
+
+# ----------------------------------------------------------------------------------------
+
+#paramiko with ssh key
+
+import paramiko
+ssh = paramiko.SSHClient()
+ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+ssh.connect('89.207.132.170', username='admin', key_filename='/home/centos/.ssh/id_rsa')
+
+
+# stderr stores error
+# stdout stores output
+# stdin stores input
+
+
+----------------------------------------------------------------------------------------------
+
+
+ssh = paramiko.SSHClient()
+ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+ssh.connect('89.0.142.86', port=22, username='admin', password='admin', timeout=5, compress=True)
+
+
+sftp_client = ssh.open_sftp()
+sftp_client.put('demo.csv', '/tmp/demo.csv')                    # transfer file from local to remote
+sftp_client.get('/tmp/sample1.json', 'sample1.json')            # transfer file from remote to local
+sftp_client.chdir('/tmp')                                       # change directory
+sftp_client.chmod('sample1.json', 0o777)                        # change permission
+
+
+
+sftp_client.close()
+
+stdin, stdout, stderr = ssh.exec_command('ls /tmp/')
+print(stdout.read().decode())
+
+
+ssh.close()
