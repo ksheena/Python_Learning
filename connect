@@ -1,0 +1,69 @@
+#include <windows.h>
+#include <shellapi.h>
+#include <iostream>
+#include <string>
+
+#pragma comment(lib, "urlmon.lib") // Required for URLDownloadToFile
+
+// Function to execute commands as Administrator
+void RunElevated(std::wstring file, std::wstring params) {
+    SHELLEXECUTEINFO sei = { sizeof(sei) };
+    sei.fMask = SEE_MASK_NOCLOSEPROCESS;
+    sei.lpVerb = L"runas"; // Triggers UAC for administrative rights
+    sei.lpFile = file.c_str();
+    sei.lpParameters = params.c_str();
+    sei.nShow = SW_HIDE; // Run in background
+
+    if (ShellExecuteEx(&sei)) {
+        std::wcout << L"Executing: " << file << L" " << params << std::endl;
+        WaitForSingleObject(sei.hProcess, INFINITE);
+        CloseHandle(sei.hProcess);
+    } else {
+        std::wcerr << L"Failed to execute command: " << file << L" Error: " << GetLastError() << std::endl;
+    }
+}
+
+int main() {
+    // Configuration
+    std::wstring url = L"http://10.99.1.45";
+    std::wstring installDir = L"C:\\Teaminstall\\";
+    std::wstring zipPath = installDir + L"TeamV.zip";
+    std::wstring customID = L"MyCustomPC2026";      // Set your desired ID here
+    std::wstring customPass = L"SecurePass123!";  // Set your permanent password here
+
+    // 1. Create target directory
+    CreateDirectoryW(installDir.c_str(), NULL);
+
+    // 2. Download the Zip file
+    std::wcout << L"Downloading RustDesk package..." << std::endl;
+    if (URLDownloadToFile(NULL, url.c_str(), zipPath.c_str(), 0, NULL) != S_OK) {
+        std::wcerr << L"Download failed!" << std::endl;
+        return 1;
+    }
+
+    // 3. Extract the Zip using PowerShell (native to Windows 10/11)
+    std::wcout << L"Extracting files..." << std::endl;
+    std::wstring unzipCmd = L"-Command Expand-Archive -Path '" + zipPath + L"' -DestinationPath '" + installDir + L"' -Force";
+    RunElevated(L"powershell.exe", unzipCmd);
+
+    // 4. Silent Installation
+    // Assuming the installer inside your zip is named 'rustdesk-install.exe'
+    std::wstring installerPath = installDir + L"rustdesk-install.exe"; 
+    RunElevated(installerPath, L"--silent-install");
+
+    // 5. Configure Custom ID and Password
+    // Default installation path is usually C:\Program Files\RustDesk
+    std::wstring rustdeskExe = L"C:\\Program Files\\RustDesk\\rustdesk.exe";
+
+    std::wcout << L"Setting Custom ID: " << customID << std::endl;
+    RunElevated(rustdeskExe, L"--set-id " + customID);
+
+    std::wcout << L"Setting Permanent Password..." << std::endl;
+    RunElevated(rustdeskExe, L"--password " + customPass);
+
+    std::wcout << L"Deployment Complete!" << std::endl;
+    return 0;
+}
+
+
+What this script will do
